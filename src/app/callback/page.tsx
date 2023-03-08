@@ -9,7 +9,7 @@ const page = () => {
 
   const login = async () => {
     try {
-      let result = await magic!.oauth.getRedirectResult();
+      let result = await magic?.oauth.getRedirectResult();
       console.log(result);
     } catch (err) {
       console.log(err);

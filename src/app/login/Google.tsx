@@ -1,26 +1,7 @@
 "use client";
 import { magic } from "@/utils/magic";
-import { useEffect } from "react";
-import { useSearchParams } from "next/navigation";
 
 const Google = () => {
-  const query = useSearchParams();
-  const state = query?.get("state");
-
-  useEffect(() => {
-    if (state) {
-      console.log(state, query);
-      magic!.oauth
-        .getRedirectResult()
-        .then((result) => {
-          console.log(result);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, [query]);
-
   const login = () => {
     magic!.oauth.loginWithRedirect({
       provider: "google",
