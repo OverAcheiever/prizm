@@ -18,8 +18,6 @@
         "@trpc/next": "^10.9.0",
         "@trpc/react-query": "^10.9.0",
         "@trpc/server": "^10.9.0",
-        "@web3auth/base": "^4.6.0",
-        "@web3auth/single-factor-auth": "^4.6.0",
         "next": "^13.2.3",
         "react": "18.2.0",
         "react-dom": "18.2.0",
