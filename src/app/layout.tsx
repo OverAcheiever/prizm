@@ -24,19 +24,19 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  useEffect(() => {
-    console.time("isLoggedIn");
-    magic!.user.isLoggedIn().then((isLoggedIn) => {
-      console.log(isLoggedIn);
-      if (isLoggedIn) {
-        magic!.user.getMetadata().then((userData) => console.log(userData));
+  // useEffect(() => {
+  //   console.time("isLoggedIn");
+  //   magic!.user.isLoggedIn().then((isLoggedIn) => {
+  //     console.log(isLoggedIn);
+  //     if (isLoggedIn) {
+  //       magic!.user.getMetadata().then((userData) => console.log(userData));
 
-        console.timeEnd("isLoggedIn");
-      } else {
-        Router.push("/login");
-      }
-    });
-  }, []);
+  //       console.timeEnd("isLoggedIn");
+  //     } else {
+  //       Router.push("/login");
+  //     }
+  //   });
+  // }, []);
 
   return (
     <html lang="en">

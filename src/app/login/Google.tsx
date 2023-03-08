@@ -1,5 +1,4 @@
 "use client";
-import { OAuthExtension } from "@magic-ext/oauth";
 import { magic } from "@/utils/magic";
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
@@ -9,7 +8,8 @@ const Google = () => {
   const state = query?.get("state");
 
   useEffect(() => {
-    if (state)
+    if (state) {
+      console.log(state, query);
       magic!.oauth
         .getRedirectResult()
         .then((result) => {
@@ -18,12 +18,13 @@ const Google = () => {
         .catch((err) => {
           console.log(err);
         });
+    }
   }, [query]);
 
   const login = () => {
     magic!.oauth.loginWithRedirect({
       provider: "google",
-      redirectURI: new URL("/login", window.location.origin).href,
+      redirectURI: new URL("/callback", window.location.origin).href,
       scope: ["email"],
     });
   };
