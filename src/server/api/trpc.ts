@@ -36,13 +36,25 @@ const createInnerTRPCContext = (_opts: CreateContextOptions) => {
   };
 };
 
+import { Magic } from "@magic-sdk/admin";
+const magic = new Magic("sk_live_89CC6847FC78EECB");
+
 /**
  * This is the actual context you will use in your router. It will be used to process every request
  * that goes through your tRPC endpoint.
  *
  * @see https://trpc.io/docs/context
  */
-export const createTRPCContext = (_opts: CreateNextContextOptions) => {
+export const createTRPCContext = async (_opts: CreateNextContextOptions) => {
+  const session = getCookie("session", {
+    req: _opts.req,
+  }) as string;
+
+  console.log("session", session);
+
+  const metadata = await magic.users.getMetadataByToken(session);
+  console.log("metadata", metadata);
+
   return createInnerTRPCContext({});
 };
 
@@ -53,6 +65,7 @@ export const createTRPCContext = (_opts: CreateNextContextOptions) => {
  */
 import { initTRPC } from "@trpc/server";
 import superjson from "superjson";
+import { getCookie } from "cookies-next";
 
 const t = initTRPC.context<typeof createTRPCContext>().create({
   transformer: superjson,

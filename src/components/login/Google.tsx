@@ -1,4 +1,3 @@
-"use client";
 import { magic } from "@/utils/magic";
 
 const Google = () => {

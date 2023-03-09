@@ -1,9 +1,3 @@
-import {
-  ArrowSmallDownIcon,
-  ArrowSmallRightIcon,
-  ArrowSmallUpIcon,
-} from "@heroicons/react/20/solid";
-import Link from "next/link";
 import QuickLinks from "./QuickLinks";
 
 const Balance = () => {
