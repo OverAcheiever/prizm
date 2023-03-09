@@ -5,7 +5,6 @@ specifiers:
   '@magic-ext/oauth': ^7.6.0
   '@magic-ext/solana': ^9.6.0
   '@magic-sdk/admin': ^1.8.0
-  '@next/font': ^13.2.3
   '@prisma/client': ^4.9.0
   '@tanstack/react-query': ^4.20.2
   '@thirdweb-dev/auth': ^3.0.7
@@ -43,7 +42,6 @@ dependencies:
   '@magic-ext/oauth': 7.6.0
   '@magic-ext/solana': 9.6.0
   '@magic-sdk/admin': 1.8.0
-  '@next/font': 13.2.3
   '@prisma/client': 4.11.0_prisma@4.11.0
   '@tanstack/react-query': 4.26.0_biqbaboplfbrettd7655fr4n2y
   '@thirdweb-dev/auth': 3.0.7_next@13.2.3
@@ -280,10 +278,6 @@ packages:
     dependencies:
       glob: 7.1.7
     dev: true
-
-  /@next/font/13.2.3:
-    resolution: {integrity: sha512-7EHzk0f7FVYICLUZTpyPk93IfcTUao++Xt1Sgb+Zk5dVOCYHabqLtlF5ywSoXIqyFlo0qlshEBxsrzHAGTWkDw==}
-    dev: false
 
   /@next/swc-android-arm-eabi/13.2.3:
     resolution: {integrity: sha512-mykdVaAXX/gm+eFO2kPeVjnOCKwanJ9mV2U0lsUGLrEdMUifPUjiXKc6qFAIs08PvmTMOLMNnUxqhGsJlWGKSw==}

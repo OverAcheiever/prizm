@@ -14,7 +14,6 @@
         "@magic-ext/oauth": "^7.6.0",
         "@magic-ext/solana": "^9.6.0",
         "@magic-sdk/admin": "^1.8.0",
-        "@next/font": "^13.2.3",
         "@prisma/client": "^4.9.0",
         "@tanstack/react-query": "^4.20.2",
         "@thirdweb-dev/auth": "^3.0.7",

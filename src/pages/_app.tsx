@@ -4,7 +4,7 @@ import { api } from "@/utils/api";
 
 import "@/styles/globals.css";
 
-import { Space_Grotesk } from "@next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import local from "next/font/local";
 
 const space = Space_Grotesk({
@@ -26,9 +26,9 @@ const circa = local({
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
-    <body className={`${space.variable} ${aeonik.variable} ${circa.variable}`}>
-      <Component {...pageProps} />;
-    </body>
+    <main className={`${space.variable} ${aeonik.variable} ${circa.variable}`}>
+      <Component {...pageProps} />
+    </main>
   );
 };
 

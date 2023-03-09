@@ -1,11 +1,14 @@
 import Balance from "@/components/home/Balance";
+import { api } from "@/utils/api";
 
-const index = () => {
+const Home = () => {
+  const a = api.users.login.useQuery({});
+
   return (
     <div className="h-screen w-full bg-black font-space text-white">
-      {/* <Balance /> */}
+      <Balance />
     </div>
   );
 };
 
-export default index;
+export default Home;

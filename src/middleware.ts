@@ -6,11 +6,13 @@ import type { NextRequest } from "next/server";
 export function middleware(request: NextRequest) {
   const session = request.cookies.get("session");
 
-  // if (!session && !request.nextUrl.pathname.startsWith("/login")) {
-  //   return NextResponse.redirect(new URL("/login", request.url));
-  // }
+  console.log(request.nextUrl.pathname.startsWith("/login") !== true);
 
-  return NextResponse.next();
+  if (!request.nextUrl.pathname.startsWith("/login")) {
+    if (!session) return NextResponse.redirect(new URL("/login", request.url));
+  } else {
+    return NextResponse.next();
+  }
 }
 
 // See "Matching Paths" below to learn more
