@@ -2,6 +2,7 @@
 import { magic } from "@/utils/magic";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
+import { setCookie } from "cookies-next";
 
 const page = () => {
   const query = useSearchParams();
@@ -10,7 +11,12 @@ const page = () => {
   const login = async () => {
     try {
       let result = await magic?.oauth.getRedirectResult();
-      console.log(result);
+      setCookie("session", result?.magic.idToken);
+
+      const user = {
+        email: result?.magic.userMetadata.email,
+      };
+      console.log(result?.oauth.userInfo.pi);
     } catch (err) {
       console.log(err);
     }
@@ -18,7 +24,7 @@ const page = () => {
 
   useEffect(() => {
     if (provider) {
-      login();
+      // login();
     }
   }, [query]);
 

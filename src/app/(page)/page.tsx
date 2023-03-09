@@ -2,7 +2,7 @@ import Balance from "./Balance";
 
 const page = () => {
   return (
-    <div>
+    <div className="h-full min-h-screen w-full">
       <Balance />
     </div>
   );
