@@ -15,6 +15,8 @@
         "@magic-ext/solana": "^9.6.0",
         "@magic-sdk/admin": "^1.8.0",
         "@prisma/client": "^4.9.0",
+        "@solana/spl-token": "^0.3.7",
+        "@solana/web3.js": "^1.73.3",
         "@tanstack/react-query": "^4.20.2",
         "@thirdweb-dev/auth": "^3.0.7",
         "@trpc/client": "^10.9.0",

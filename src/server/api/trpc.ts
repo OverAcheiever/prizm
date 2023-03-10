@@ -18,7 +18,12 @@ import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
 
 import { prisma } from "@/server/db";
 
-type CreateContextOptions = Record<string, never>;
+type CreateContextOptions = {
+  user: string | null;
+};
+
+import { Magic } from "@magic-sdk/admin";
+const magic = new Magic("sk_live_89CC6847FC78EECB");
 
 /**
  * This helper generates the "internals" for a tRPC context. If you need to use it, you can export
@@ -30,14 +35,12 @@ type CreateContextOptions = Record<string, never>;
  *
  * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
  */
-const createInnerTRPCContext = (_opts: CreateContextOptions) => {
+const createInnerTRPCContext = async (_opts: CreateContextOptions) => {
   return {
+    user: _opts.user,
     prisma,
   };
 };
-
-import { Magic } from "@magic-sdk/admin";
-const magic = new Magic("sk_live_89CC6847FC78EECB");
 
 /**
  * This is the actual context you will use in your router. It will be used to process every request
@@ -50,12 +53,32 @@ export const createTRPCContext = async (_opts: CreateNextContextOptions) => {
     req: _opts.req,
   }) as string;
 
-  console.log("session", session);
+  try {
+    const metadata = await magic.users.getMetadataByToken(session);
 
-  const metadata = await magic.users.getMetadataByToken(session);
-  console.log("metadata", metadata);
+    const user = await prisma.user.findUnique({
+      where: {
+        email: metadata.email!,
+      },
+      select: {
+        id: true,
+      },
+    });
 
-  return createInnerTRPCContext({});
+    if (!user) {
+      new TRPCError({
+        code: "UNAUTHORIZED",
+      });
+    }
+
+    return createInnerTRPCContext({
+      user: user ? user.id : null,
+    });
+  } catch {
+    return createInnerTRPCContext({
+      user: null,
+    });
+  }
 };
 
 /**
@@ -63,7 +86,7 @@ export const createTRPCContext = async (_opts: CreateNextContextOptions) => {
  *
  * This is where the tRPC API is initialized, connecting the context and transformer.
  */
-import { initTRPC } from "@trpc/server";
+import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import { getCookie } from "cookies-next";
 
@@ -96,3 +119,18 @@ export const createTRPCRouter = t.router;
  * are logged in.
  */
 export const publicProcedure = t.procedure;
+
+export const middleware = t.middleware;
+
+const isUser = middleware(async ({ ctx, next }) => {
+  if (!ctx.user) {
+    throw new TRPCError({ code: "UNAUTHORIZED" });
+  }
+  return next({
+    ctx: {
+      user: ctx.user,
+    },
+  });
+});
+
+export const protectedProcedure = publicProcedure.use(isUser);

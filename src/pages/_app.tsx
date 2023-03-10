@@ -6,6 +6,7 @@ import "@/styles/globals.css";
 
 import { Space_Grotesk } from "next/font/google";
 import local from "next/font/local";
+import { Toaster } from "react-hot-toast";
 
 const space = Space_Grotesk({
   subsets: ["latin"],
@@ -27,6 +28,11 @@ const circa = local({
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <main className={`${space.variable} ${aeonik.variable} ${circa.variable}`}>
+      <Toaster
+        toastOptions={{
+          className: "font-space",
+        }}
+      />
       <Component {...pageProps} />
     </main>
   );
