@@ -17,8 +17,6 @@ const Input = () => {
     } else setAmount(Number(e.target.value));
   };
 
-  console.log(amount);
-
   return (
     <input
       type="number"

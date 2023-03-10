@@ -18,7 +18,6 @@ export const getBalance = async (publicKey: PublicKey): Promise<string> => {
         .split(".")[0]!
     ).toLocaleString();
   } catch (err) {
-    console.log(err);
     return "0";
   }
 };

@@ -7,13 +7,6 @@ import { getCookie } from "cookies-next";
 import { useEffect } from "react";
 
 const Home = () => {
-  useEffect(() => {
-    // magic get metadata
-    magic!.user.getMetadata().then((metadata) => {
-      console.log(metadata);
-    });
-  }, []);
-
   return (
     <div className="relative flex h-screen w-full flex-col items-center bg-black font-space text-white">
       <div className="relative flex w-full max-w-xl flex-grow flex-col">
