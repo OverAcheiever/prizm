@@ -1,6 +1,6 @@
 const Lable = () => {
   return (
-    <div className="mt-1 rounded-full bg-white px-5 py-1 font-semibold text-black">
+    <div className="w-max rounded-full bg-white px-5 py-1 font-aeonik text-black">
       DEPOSIT
     </div>
   );

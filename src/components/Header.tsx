@@ -1,11 +1,14 @@
 import { api } from "@/utils/api";
+import Logo from "./Logo";
 
 const Header = () => {
   const { data } = api.users.picture.useQuery();
 
   return (
     <div className="flex w-full items-center justify-between px-5 pt-8">
-      <div className="w-1/3"></div>
+      <div className="-mt-2 flex h-full w-1/3 items-center justify-start">
+        <Logo />
+      </div>
       <div className="w-1/3 text-center text-lg"></div>
       <div className="flex w-1/3 justify-end">
         {data ? (

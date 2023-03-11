@@ -2,9 +2,13 @@
 
 import { useState } from "react";
 
-const Input = () => {
-  const [amount, setAmount] = useState<number>(100);
-
+const Input = ({
+  amount,
+  setAmount,
+}: {
+  amount: number;
+  setAmount: (amount: number) => void;
+}) => {
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // minimum amount is 0, maximum amount is 1000, allow only numbers with no decimals
 
@@ -20,7 +24,7 @@ const Input = () => {
   return (
     <input
       type="number"
-      className="w-full bg-black text-center text-8xl font-semibold outline-none"
+      className="w-full bg-black pt-10 text-center text-8xl font-semibold outline-none"
       value={
         // if theres a zero infron of the number, remove it
         amount === 0 ? "" : amount

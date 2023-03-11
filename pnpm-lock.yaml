@@ -6,6 +6,7 @@ specifiers:
   '@magic-ext/solana': ^9.6.0
   '@magic-sdk/admin': ^1.8.0
   '@prisma/client': ^4.9.0
+  '@solana/pay': ^0.2.5
   '@solana/spl-token': ^0.3.7
   '@solana/web3.js': ^1.73.3
   '@tanstack/react-query': ^4.20.2
@@ -22,6 +23,8 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.53.0
   '@typescript-eslint/parser': ^5.53.0
   autoprefixer: ^10.4.7
+  bignumber.js: ^9.1.1
+  bs58: ^5.0.0
   cookies-next: ^2.1.1
   eslint: ^8.34.0
   eslint-config-next: ^13.2.1
@@ -45,14 +48,17 @@ dependencies:
   '@magic-ext/solana': 9.6.0
   '@magic-sdk/admin': 1.8.0
   '@prisma/client': 4.11.0_prisma@4.11.0
+  '@solana/pay': 0.2.5
   '@solana/spl-token': 0.3.7_@solana+web3.js@1.73.3
   '@solana/web3.js': 1.73.3
   '@tanstack/react-query': 4.26.0_biqbaboplfbrettd7655fr4n2y
-  '@thirdweb-dev/auth': 3.0.7_hrxexvmahvncppbigzenxvvgca
+  '@thirdweb-dev/auth': 3.0.7_4sfcoyxoe2tzwliqqk33iy4tcm
   '@trpc/client': 10.14.0_@trpc+server@10.14.0
   '@trpc/next': 10.14.0_x6gg3jfwfdz6xcek5wczo75xfu
   '@trpc/react-query': 10.14.0_gqzahltmmgiv44m4moyfehsu6m
   '@trpc/server': 10.14.0
+  bignumber.js: 9.1.1
+  bs58: 5.0.0
   cookies-next: 2.1.1
   magic-sdk: 13.6.0
   next: 13.2.3_biqbaboplfbrettd7655fr4n2y
@@ -511,6 +517,30 @@ packages:
       buffer: 6.0.3
     dev: false
 
+  /@solana/pay/0.2.5:
+    resolution: {integrity: sha512-Olz1Tdq9hOD/KW8A6hyYR12gn2JfnP1lLTlpMtXniSinjcqG+zttCYvJFrf6itLIUSsmqokF8NGzrdZqK/GnSA==}
+    engines: {node: '>=16'}
+    dependencies:
+      '@solana/qr-code-styling': 1.6.0
+      '@solana/spl-token': 0.3.7_@solana+web3.js@1.73.3
+      '@solana/web3.js': 1.73.3
+      bignumber.js: 9.1.1
+      cross-fetch: 3.1.5
+      js-base64: 3.7.5
+      tweetnacl: 1.0.3
+    transitivePeerDependencies:
+      - bufferutil
+      - encoding
+      - supports-color
+      - utf-8-validate
+    dev: false
+
+  /@solana/qr-code-styling/1.6.0:
+    resolution: {integrity: sha512-KyBmyFKPxQPhUkP0jjnxV2ZeF1R1guTD8Hrd0YvHvMnhtrNEoEEdv4Jpp4W0GN4qCGG2KYOM5d3TgoLD+CNf9Q==}
+    dependencies:
+      qrcode-generator: 1.4.4
+    dev: false
+
   /@solana/spl-token/0.3.7_@solana+web3.js@1.73.3:
     resolution: {integrity: sha512-bKGxWTtIw6VDdCBngjtsGlKGLSmiu/8ghSt/IOYJV24BsymRbgq7r12GToeetpxmPaZYLddKwAz7+EwprLfkfg==}
     engines: {node: '>=16'}
@@ -582,7 +612,7 @@ packages:
       use-sync-external-store: 1.2.0_react@18.2.0
     dev: false
 
-  /@thirdweb-dev/auth/3.0.7_hrxexvmahvncppbigzenxvvgca:
+  /@thirdweb-dev/auth/3.0.7_4sfcoyxoe2tzwliqqk33iy4tcm:
     resolution: {integrity: sha512-pIOFxTpmyyVNdws4pV6fRfPmrnrxRrC8t1Wg8cW86scJ2QOu6/y2AZkLVA8x92l4ADW/x9O1vK7t3VtYBOtdGQ==}
     peerDependencies:
       '@noble/ed25519': ^1.7.1
@@ -615,6 +645,7 @@ packages:
         optional: true
     dependencies:
       '@solana/web3.js': 1.73.3
+      bs58: 5.0.0
       cookie: 0.5.0
       next: 13.2.3_biqbaboplfbrettd7655fr4n2y
       uuid: 9.0.0
@@ -1096,6 +1127,10 @@ packages:
       safe-buffer: 5.2.1
     dev: false
 
+  /base-x/4.0.0:
+    resolution: {integrity: sha512-FuwxlW4H5kh37X/oW59pwTzzTKRzfrrQwhmyspRM7swOEZcHtDZSCt45U6oKgtuFE+WYPblePMVIPR4RZrh/hw==}
+    dev: false
+
   /base64-js/1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
     dev: false
@@ -1191,6 +1226,12 @@ packages:
     resolution: {integrity: sha512-Ok3Wdf5vOIlBrgCvTq96gBkJw+JUEzdBgyaza5HLtPm7yTHkjRy8+JzNyHF7BHa0bNWOQIp3m5YF0nnFcOIKLw==}
     dependencies:
       base-x: 3.0.9
+    dev: false
+
+  /bs58/5.0.0:
+    resolution: {integrity: sha512-r+ihvQJvahgYT50JD05dyJNKlmmSlMoOGwn1lCcEzanPglg7TxYjioQUYehQ9mAR/+hOSd2jRc/Z2y5UxBymvQ==}
+    dependencies:
+      base-x: 4.0.0
     dev: false
 
   /bs58check/2.1.2:
@@ -1357,6 +1398,14 @@ packages:
       ripemd160: 2.0.2
       safe-buffer: 5.2.1
       sha.js: 2.4.11
+    dev: false
+
+  /cross-fetch/3.1.5:
+    resolution: {integrity: sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw==}
+    dependencies:
+      node-fetch: 2.6.7
+    transitivePeerDependencies:
+      - encoding
     dev: false
 
   /cross-spawn/7.0.3:
@@ -2644,6 +2693,10 @@ packages:
       - utf-8-validate
     dev: false
 
+  /js-base64/3.7.5:
+    resolution: {integrity: sha512-3MEt5DTINKqfScXKfJFrRbxkrnk2AxPWGBL/ycjz4dK8iqiSJ06UxD8jh8xuh6p10TX4t2+7FsBYVxxQbMg+qA==}
+    dev: false
+
   /js-sdsl/4.3.0:
     resolution: {integrity: sha512-mifzlm2+5nZ+lEcLJMoBK0/IH/bDg8XnJfd/Wq6IP+xoCjLZsTOnV2QpxlVbX9bMnkl5PdEjNtBJ9Cj1NjifhQ==}
     dev: true
@@ -2904,6 +2957,18 @@ packages:
 
   /node-addon-api/2.0.2:
     resolution: {integrity: sha512-Ntyt4AIXyaLIuMHF6IOoTakB3K+RWxwtsHNRxllEoA6vPwP9o4866g6YWDLUdnucilZhmkxiHwHr11gAENw+QA==}
+    dev: false
+
+  /node-fetch/2.6.7:
+    resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==}
+    engines: {node: 4.x || >=6.0.0}
+    peerDependencies:
+      encoding: ^0.1.0
+    peerDependenciesMeta:
+      encoding:
+        optional: true
+    dependencies:
+      whatwg-url: 5.0.0
     dev: false
 
   /node-fetch/2.6.9:
@@ -3290,6 +3355,10 @@ packages:
     resolution: {integrity: sha512-rRV+zQD8tVFys26lAGR9WUuS4iUAngJScM+ZRSKtvl5tKeZ2t5bvdNFdNHBW9FWR4guGHlgmsZ1G7BSm2wTbuA==}
     engines: {node: '>=6'}
     dev: true
+
+  /qrcode-generator/1.4.4:
+    resolution: {integrity: sha512-HM7yY8O2ilqhmULxGMpcHSF1EhJJ9yBj8gvDEuZ6M+KGJ0YY2hKpnXvRD+hZPLrDVck3ExIGhmPtSdcjC+guuw==}
+    dev: false
 
   /query-string/5.1.1:
     resolution: {integrity: sha512-gjWOsm2SoGlgLEdAGt7a6slVOk9mGiXmPFMqrEhLQ68rhQuBnpfs3+EmlvqKyxnCo9/PPlF+9MtY02S1aFg+Jw==}
@@ -3785,6 +3854,10 @@ packages:
       tslib: 1.14.1
       typescript: 4.9.5
     dev: true
+
+  /tweetnacl/1.0.3:
+    resolution: {integrity: sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw==}
+    dev: false
 
   /type-check/0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}

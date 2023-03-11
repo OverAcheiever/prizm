@@ -34,7 +34,7 @@ const Send = () => {
           ) : (
             <>
               {data?.map((user) => (
-                <div className="group flex h-14 w-full cursor-pointer items-center justify-between rounded-full px-3 transition-all duration-500 hover:bg-white hover:text-black">
+                <div className="group flex h-14 w-full cursor-pointer items-center justify-between rounded-full px-3 pl-2.5 transition-all duration-500 hover:bg-white hover:text-black">
                   <div className="flex items-center gap-x-3">
                     <img
                       src={user.picture}
