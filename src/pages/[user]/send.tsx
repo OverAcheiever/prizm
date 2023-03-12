@@ -7,6 +7,7 @@ import Pay from "@/components/user/send/Pay";
 
 const Send = () => {
   const [amount, setAmount] = useState<number>(1);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const router = useRouter();
   const username = router.query.user;
@@ -31,9 +32,14 @@ const Send = () => {
         <Header picture={data?.picture} username={data?.username!} />
         <div className="absoloute top-0 left-0 right-0 -mt-2 h-5 w-full bg-white"></div>
         <div className="flex h-full w-full flex-grow flex-col justify-between bg-white">
-          <Input amount={amount} setAmount={setAmount} />
+          <Input amount={amount} setAmount={setAmount} isLoading={isLoading} />
 
-          <Pay username={data?.username} amount={amount} />
+          <Pay
+            username={data?.username}
+            amount={amount}
+            isLoading={isLoading}
+            setIsLoading={setIsLoading}
+          />
         </div>
       </div>
     </div>

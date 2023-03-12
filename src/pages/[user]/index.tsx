@@ -19,8 +19,12 @@ const User = () => {
 
   return (
     <div className="flex h-screen w-full justify-center bg-black font-space text-white">
-      <div className="h-full w-full max-w-lg">
+      <div className="flex h-full w-full max-w-lg flex-col">
         <Header picture={data?.picture} username={data?.username!} />
+        <div className="flex-grow"></div>
+        <div className="flex w-full items-center justify-center p-5">
+          <button className="h-14 w-full rounded bg-white font-aeonik text-xl text-black">PAY</button>
+        </div>
       </div>
     </div>
   );

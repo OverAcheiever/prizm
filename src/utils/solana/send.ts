@@ -15,6 +15,7 @@ import {
 } from "@solana/web3.js";
 import base58 from "bs58";
 import { env } from "@/env.mjs";
+import { getATA } from "./getATA";
 
 export const send = async ({
   sender,
@@ -27,12 +28,8 @@ export const send = async ({
 }) => {
   const treasury = Keypair.fromSecretKey(base58.decode(env.TREASURY));
 
-  const senderATA = await getAssociatedTokenAddress(sender, USDC_MINT, true);
-  const recipientATA = await getAssociatedTokenAddress(
-    recipient,
-    USDC_MINT,
-    true
-  );
+  const senderATA = await getATA(sender);
+  const recipientATA = await getATA(recipient);
 
   const decimals = (await await getMint(connection, USDC_MINT)).decimals;
   const _amount = amount * 10 ** decimals;
@@ -42,9 +39,11 @@ export const send = async ({
     publicKey: sender,
   });
 
+  const hash = await connection.getLatestBlockhash();
+
   const transfer = new Transaction({
     feePayer: sender,
-    recentBlockhash: (await await connection.getLatestBlockhash()).blockhash,
+    recentBlockhash: hash.blockhash,
   }).add(
     createTransferCheckedInstruction(
       senderATA,
@@ -56,26 +55,10 @@ export const send = async ({
     )
   );
 
-  // const transfer = new VersionedTransaction(
-  //   new TransactionMessage({
-  //     payerKey: treasury.publicKey,
-  //     recentBlockhash: (await connection.getLatestBlockhash()).blockhash,
-  //     instructions: [
-  //       createTransferCheckedInstruction(
-  //         senderATA,
-  //         USDC_MINT,
-  //         recipientATA,
-  //         sender,
-  //         _amount,
-  //         decimals
-  //       ),
-  //     ],
-  //   }).compileToV0Message()
-  // );
-
   return Buffer.from(
     transfer.serialize({
       requireAllSignatures: false,
+      verifySignatures: true,
     })
   ).toString("base64");
 };

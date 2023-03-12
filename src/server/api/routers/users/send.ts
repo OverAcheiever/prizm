@@ -1,8 +1,9 @@
-import { Keypair, PublicKey, Transaction } from "@solana/web3.js";
+import { PublicKey, SystemProgram, Transaction } from "@solana/web3.js";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { protectedProcedure } from "../../trpc";
 import { send as getTx } from "@/utils/solana/send";
+import { connection } from "@/constants";
 
 export const send = protectedProcedure
   .input(
@@ -35,6 +36,8 @@ export const send = protectedProcedure
         code: "BAD_REQUEST",
       });
     }
+
+    console.log(user.publicKey, recipient.publicKey);
 
     return await getTx({
       sender: new PublicKey(user.publicKey),

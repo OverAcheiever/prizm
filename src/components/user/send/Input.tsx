@@ -5,9 +5,11 @@ import { useState } from "react";
 const Input = ({
   amount,
   setAmount,
+  isLoading,
 }: {
   amount: number;
   setAmount: (amount: number) => void;
+  isLoading: boolean;
 }) => {
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // minimum amount is 0, maximum amount is 1000, allow only numbers with no decimals
@@ -31,6 +33,7 @@ const Input = ({
         amount === 0 ? "" : amount
       }
       onChange={handleAmountChange}
+      disabled={isLoading}
     />
   );
 };
