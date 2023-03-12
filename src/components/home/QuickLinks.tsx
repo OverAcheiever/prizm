@@ -16,7 +16,7 @@ const QuickLinks = () => {
           <div className="mt-2 text-sm text-neutral-500">Deposit</div>
         </button>
       </Link>
-      <Link href="/send">
+      <Link href="/search">
         <button className="flex flex-col items-center">
           <div className="h-14 w-14 rounded-full bg-white bg-opacity-100 p-3">
             <ArrowSmallRightIcon className="text-black" />

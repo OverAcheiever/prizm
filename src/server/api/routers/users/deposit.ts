@@ -10,6 +10,7 @@ import { protectedProcedure } from "../../trpc";
 import { connection, USDC_MINT } from "@/constants";
 import { env } from "@/env.mjs";
 import base58 from "bs58";
+import { getATA } from "@/utils/solana/getATA";
 
 export const deposit = protectedProcedure
   .input(
@@ -43,8 +44,8 @@ export const deposit = protectedProcedure
       )
     ).address;
 
-    const amount = input.amount * 10 ** 6;
     const decimals = (await getMint(connection, USDC_MINT)).decimals;
+    const amount = input.amount * 10 ** decimals;
 
     await transferChecked(
       connection,

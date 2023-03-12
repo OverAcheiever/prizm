@@ -43,7 +43,7 @@ const Username = ({ user }: { user: User }) => {
           <div className="relative">
             <div className="absolute left-2.5 top-0 bottom-0 flex h-14 items-center justify-center">
               <img
-                src="https://lh3.googleusercontent.com/a/AGNmyxbuqOIeT33NnuM6S0YspWjAzwrJK1-ge9Kt-Wms4Q=s96-c"
+                src={user.picture}
                 alt=""
                 className="h-10 w-10 rounded-full"
               />
