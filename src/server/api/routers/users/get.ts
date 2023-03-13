@@ -29,6 +29,7 @@ export const get = protectedProcedure
       select: {
         username: true,
         picture: true,
+        publicKey: true,
       },
     });
 
@@ -41,5 +42,7 @@ export const get = protectedProcedure
     return {
       username: recipient.username!,
       picture: recipient.picture,
+      sender: sender.publicKey,
+      recipient: recipient.publicKey,
     };
   });

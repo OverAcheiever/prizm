@@ -32,15 +32,10 @@ export const send = async ({
   const decimals = (await await getMint(connection, USDC_MINT)).decimals;
   const _amount = amount * 10 ** decimals;
 
-  // await sendGas({
-  //   treasury,
-  //   publicKey: sender,
-  // });
-
   const hash = await connection.getLatestBlockhash();
 
-  const transfer = new Transaction({
-    feePayer: sender,
+  const tx = new Transaction({
+    feePayer: new PublicKey("HjAtUMRS2qSQjLXUVC12rcXR9jdL8rbEPmZoMmumpxYP"),
     recentBlockhash: hash.blockhash,
   }).add(
     createTransferCheckedInstruction(
@@ -53,46 +48,5 @@ export const send = async ({
     )
   );
 
-  return Buffer.from(
-    transfer.serialize({
-      requireAllSignatures: false,
-      verifySignatures: true,
-    })
-  ).toString("base64");
-};
-
-const sendGas = async ({
-  treasury,
-  publicKey,
-}: {
-  treasury: Keypair;
-  publicKey: PublicKey;
-}) => {
-  const hash = await connection.getLatestBlockhash();
-
-  const isSenderInitialized = await connection.getAccountInfo(publicKey);
-
-  const gas = new VersionedTransaction(
-    new TransactionMessage({
-      payerKey: treasury.publicKey,
-      recentBlockhash: hash.blockhash,
-      instructions: [
-        SystemProgram.transfer({
-          fromPubkey: treasury.publicKey,
-          toPubkey: publicKey,
-          lamports: !isSenderInitialized
-            ? (await getMinimumBalance()) + 5000
-            : 5000,
-        }),
-      ],
-    }).compileToV0Message()
-  );
-
-  gas.sign([treasury]);
-
-  await connection.sendTransaction(gas);
-};
-
-const getMinimumBalance = async () => {
-  return await connection.getMinimumBalanceForRentExemption(0);
+  return tx;
 };

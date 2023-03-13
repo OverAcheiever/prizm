@@ -3,22 +3,35 @@
 
 generator client {
     provider        = "prisma-client-js"
-    previewFeatures = ["fullTextSearch", "fullTextIndex"]
+    previewFeatures = ["fullTextSearch", "fullTextIndex", "referentialIntegrity"]
 }
 
 datasource db {
-    provider = "mysql"
-    url      = env("DATABASE_URL")
+    provider     = "mysql"
+    url          = env("DATABASE_URL")
+    relationMode = "prisma"
 }
 
 model User {
-    id        String   @id @default(cuid())
-    email     String   @unique
-    username  String?  @unique
-    publicKey String   @unique
+    id        String     @id @default(cuid())
+    email     String     @unique
+    username  String?    @unique
+    publicKey String     @unique
     picture   String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    outbound  Transfer[] @relation("From")
+    inbound   Transfer[] @relation("To")
+    createdAt DateTime   @default(now())
+    updatedAt DateTime   @updatedAt
 
     @@fulltext([username])
+}
+
+model Transfer {
+    id         String   @id @default(cuid())
+    from       User     @relation("From", fields: [fromUserId], references: [id])
+    fromUserId String
+    to         User     @relation("To", fields: [toUserId], references: [id])
+    toUserId   String
+    amount     Int
+    createdAt  DateTime @default(now())
 }

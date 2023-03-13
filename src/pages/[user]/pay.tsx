@@ -29,7 +29,7 @@ const Send = () => {
       className="flex h-screen w-full justify-center bg-black font-space text-white"
     >
       <div className="relative flex h-full w-full max-w-lg flex-col">
-        <Header picture={data?.picture} username={data?.username!} />
+        <Header />
         <div className="absoloute top-0 left-0 right-0 -mt-2 h-5 w-full bg-white"></div>
         <div className="flex h-full w-full flex-grow flex-col justify-between bg-white">
           <Input amount={amount} setAmount={setAmount} isLoading={isLoading} />
@@ -37,6 +37,8 @@ const Send = () => {
           <Pay
             username={data?.username}
             amount={amount}
+            sender={data?.sender}
+            recipient={data?.recipient}
             isLoading={isLoading}
             setIsLoading={setIsLoading}
           />
