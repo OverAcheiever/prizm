@@ -21,7 +21,7 @@ const Transfers = () => {
   console.log(data);
 
   return (
-    <div className="flex flex-grow flex-col-reverse gap-y-5 px-3 pb-5">
+    <div className="flex flex-grow flex-col justify-end gap-y-5 p-5 pb-3">
       {data?.map((transfer, key) => {
         return (
           <div
@@ -40,15 +40,11 @@ const Transfers = () => {
               }`}
             >
               <img
-                src={
-                  username === transfer.from.username
-                    ? transfer.to.picture
-                    : transfer.from.picture
-                }
+                src={transfer.from.picture}
                 className="h-12 w-12 rounded-full border-[4px] border-black"
                 alt=""
               />
-              <div className="flex h-12 w-max items-center justify-center rounded bg-black px-5 text-xl font-semibold">
+              <div className="flex h-12 w-max items-center justify-center rounded bg-black px-5 text-xl font-semibold text-white">
                 ${transfer.amount}
               </div>
             </div>

@@ -24,7 +24,7 @@ const Send = () => {
   }, [handle]);
 
   return (
-    <div className="flex  h-screen w-full justify-center bg-black font-space text-white">
+    <div className="flex  h-[100svh] w-full justify-center bg-black font-space text-white">
       <div className="w-full max-w-lg px-5 pt-5 lg:pt-10">
         <Search handle={handle} setHandle={setHandle} />
 

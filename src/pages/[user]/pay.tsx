@@ -22,12 +22,7 @@ const Send = () => {
   );
 
   return (
-    <div
-      style={{
-        maxHeight: "-webkit-fill-available",
-      }}
-      className="flex h-screen w-full justify-center bg-black font-space text-white"
-    >
+    <div className="flex h-[100svh] w-full justify-center bg-black font-space text-white">
       <div className="relative flex h-full w-full max-w-lg flex-col">
         <Header />
         <div className="absoloute top-0 left-0 right-0 -mt-2 h-5 w-full bg-white"></div>

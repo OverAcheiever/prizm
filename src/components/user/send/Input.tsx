@@ -27,7 +27,7 @@ const Input = ({
     <input
       type="tel"
       pattern="[0-9]"
-      className="w-full bg-white pt-10 text-center text-9xl font-semibold text-black outline-none"
+      className="w-full bg-white pt-10 text-center text-9xl font-semibold text-black outline-none disabled:text-black"
       value={
         // if theres a zero infron of the number, remove it
         amount === 0 ? "" : amount

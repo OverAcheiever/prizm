@@ -8,7 +8,7 @@ import { useEffect } from "react";
 
 const Home = () => {
   return (
-    <div className="relative flex max-h-[dvh] h-screen w-full flex-col items-center bg-black font-space text-white">
+    <div className="relative flex h-[100svh] w-full flex-col items-center bg-black font-space text-white">
       <div className="relative flex w-full max-w-xl flex-grow flex-col">
         <Header />
         <Balance />
