@@ -12,6 +12,8 @@ import base58 from "bs58";
 import { env } from "@/env.mjs";
 import { prisma } from "@/server/db";
 
+import { getBalance } from "@/utils/solana/getBalance";
+
 export const transfer = protectedProcedure
   .input(
     z.object({

@@ -1,12 +1,12 @@
-import Input from "@/components/user/send/Input";
+import Input from "@/components/user/pay/Input";
 import Header from "@/components/user/Header";
 import { api } from "@/utils/api";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Pay from "@/components/user/send/Pay";
+import Pay from "@/components/user/pay/Pay";
 
 const Send = () => {
-  const [amount, setAmount] = useState<number>(1);
+  const [amount, setAmount] = useState<number>(100);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const router = useRouter();

@@ -1,6 +1,9 @@
+import { connection, USDC_MINT } from "@/constants";
 import { api } from "@/utils/api";
 import { magic } from "@/utils/magic";
+import { getBalance } from "@/utils/solana/getBalance";
 import { send } from "@/utils/solana/send";
+import { getAssociatedTokenAddressSync } from "@solana/spl-token";
 import { PublicKey, Transaction } from "@solana/web3.js";
 import { useRouter } from "next/router";
 import { toast } from "react-hot-toast";
@@ -30,6 +33,22 @@ const Pay = ({
 
     try {
       setIsLoading(true);
+
+      const ATA = getAssociatedTokenAddressSync(
+        USDC_MINT,
+        new PublicKey(sender)
+      );
+
+      const _balance = await connection.getTokenAccountBalance(ATA);
+
+      const balance =
+        parseInt(_balance.value.amount) / 10 ** _balance.value.decimals;
+
+      if (balance < amount) {
+        toast.error("Insufficient balance");
+        setIsLoading(false);
+        return;
+      }
 
       const signedTx = await magic?.solana.signTransaction(
         await send({
@@ -65,7 +84,7 @@ const Pay = ({
   return (
     <div className="flex w-full items-center justify-center">
       <button
-        className="m-5 flex h-16 w-full items-center justify-center rounded-md bg-black font-aeonik text-xl"
+        className="m-5 flex h-14 w-full items-center justify-center rounded-lg bg-black text-lg font-bold"
         onClick={pay}
         disabled={isLoading || !username || !sender || !recipient}
       >

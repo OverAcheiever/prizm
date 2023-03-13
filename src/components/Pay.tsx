@@ -7,8 +7,8 @@ const Pay = () => {
 
   return (
     <Link href={`/${username}/pay`}>
-      <div className="flex w-full items-center justify-center p-3 py-5">
-        <button className="h-14 w-full rounded-full bg-black font-aeonik text-xl text-white">
+      <div className="flex w-full items-center justify-center p-5">
+        <button className="h-14 w-full rounded-lg bg-black font-bold text-lg text-white">
           PAY
         </button>
       </div>

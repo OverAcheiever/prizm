@@ -12,7 +12,7 @@ const Header = () => {
       <div className="w-1/3 text-center text-lg"></div>
       <div className="flex w-1/3 justify-end">
         {data ? (
-          <img src={data} alt="" className="h-12 w-12 rounded-full" />
+          <img src={data} alt="" className="h-12 w-12 rounded-full border-[3px] border-white" />
         ) : (
           <div className="h-12 w-12 animate-pulse rounded-full bg-neutral-800"></div>
         )}

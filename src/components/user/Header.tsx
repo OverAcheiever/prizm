@@ -15,7 +15,7 @@ const Header = () => {
   );
 
   return (
-    <div className=" flex w-full items-center bg-white py-3 px-4 sm:rounded-b-xl">
+    <div className="flex w-full items-center bg-white py-3 px-4 sm:rounded-b-xl">
       <div className="w-1/3">
         <div className="h-[3rem] w-[3rem] ">
           {data ? (
