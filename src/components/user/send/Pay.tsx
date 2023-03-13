@@ -1,7 +1,8 @@
 import { connection } from "@/constants";
 import { api } from "@/utils/api";
 import { magic } from "@/utils/magic";
-import { Transaction } from "@solana/web3.js";
+import { send } from "@/utils/solana/send";
+import { PublicKey, Transaction } from "@solana/web3.js";
 import { toast } from "react-hot-toast";
 
 const Pay = ({
@@ -23,9 +24,12 @@ const Pay = ({
     try {
       setIsLoading(true);
 
-      const tx = await mutateAsync({
-        recipient: username,
+      const tx = await send({
         amount,
+        sender: new PublicKey("77VEWpPwnApNutKyKCYT5eRctrg1ssnRJkL8XGMjabqU"),
+        recipient: new PublicKey(
+          "46JmgiV6ajFoMX4yuTd8PTH6vrg2apoPqJ62gqr2mmKz"
+        ),
       });
 
       const signedTx = await magic?.solana.signTransaction(
@@ -41,9 +45,9 @@ const Pay = ({
       );
 
       const rawTx = Transaction.from(signedTx.rawTransaction);
-      await connection.sendRawTransaction(rawTx.serialize(), {
-        skipPreflight: true,
-      });
+      // await connection.sendRawTransaction(rawTx.serialize(), {
+      //   skipPreflight: true,
+      // });
 
       setIsLoading(false);
     } catch (err) {

@@ -1,3 +1,6 @@
+import { connection } from "@/constants";
+import { getATA } from "@/utils/solana/getATA";
+import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
 import { z } from "zod";
 import { publicProcedure } from "../../trpc";
 
@@ -36,6 +39,8 @@ export const login = publicProcedure
         },
       });
     }
+
+    await getATA(new PublicKey(input.publicKey));
 
     return {
       username: user ? user.username : null,

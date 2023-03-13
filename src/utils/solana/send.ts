@@ -14,7 +14,7 @@ import {
   VersionedTransaction,
 } from "@solana/web3.js";
 import base58 from "bs58";
-import { env } from "@/env.mjs";
+// import { env } from "@/env.mjs";
 import { getATA } from "./getATA";
 
 export const send = async ({
@@ -26,18 +26,16 @@ export const send = async ({
   recipient: PublicKey;
   amount: number;
 }) => {
-  const treasury = Keypair.fromSecretKey(base58.decode(env.TREASURY));
-
-  const senderATA = await getATA(sender);
-  const recipientATA = await getATA(recipient);
+  const senderATA = await getAssociatedTokenAddress(USDC_MINT, sender);
+  const recipientATA = await getAssociatedTokenAddress(USDC_MINT, recipient);
 
   const decimals = (await await getMint(connection, USDC_MINT)).decimals;
   const _amount = amount * 10 ** decimals;
 
-  await sendGas({
-    treasury,
-    publicKey: sender,
-  });
+  // await sendGas({
+  //   treasury,
+  //   publicKey: sender,
+  // });
 
   const hash = await connection.getLatestBlockhash();
 
