@@ -33,9 +33,10 @@ const Search = ({
         type="text"
         name=""
         id=""
-        className="leading-0 h-14 w-full rounded-full border border-gray-400 bg-white pb-0.5 pl-[2.6rem] pr-14 text-xl font-medium lowercase text-black outline-none"
+        className="leading-0 h-14 w-full rounded-full border border-gray-400 bg-white pb-0.5 pl-[2.65rem] pr-14 text-xl font-medium lowercase text-black outline-none"
         value={handle}
         onChange={handleChange}
+        placeholder="username"
         ref={input}
       />
       <div className="absolute right-6 top-0 bottom-0 flex h-14 items-center justify-center">
