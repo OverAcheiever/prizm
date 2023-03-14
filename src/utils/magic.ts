@@ -1,6 +1,7 @@
 import { Magic } from "magic-sdk";
 import { OAuthExtension } from "@magic-ext/oauth";
 import { SolanaExtension } from "@magic-ext/solana";
+import { env } from "@/env.mjs";
 
 const rpcUrl = "https://api.devnet.solana.com";
 
@@ -18,4 +19,4 @@ const createMagic = (key: string) => {
     : undefined;
 };
 
-export const magic = createMagic("pk_live_E3CFF805706B8B93");
+export const magic = createMagic(env.NEXT_PUBLIC_MAGIC_KEY);
