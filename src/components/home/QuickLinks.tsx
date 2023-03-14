@@ -4,6 +4,7 @@ import {
   ArrowSmallUpIcon,
 } from "@heroicons/react/20/solid";
 import Link from "next/link";
+import { toast } from "react-hot-toast";
 
 const QuickLinks = () => {
   return (
@@ -25,7 +26,12 @@ const QuickLinks = () => {
         </button>
       </Link>
 
-      <button className="flex flex-col items-center">
+      <button
+        className="flex flex-col items-center"
+        onClick={() => {
+          toast("Coming Soon!");
+        }}
+      >
         <div className="h-14 w-14 rounded-full bg-white p-3">
           <ArrowSmallUpIcon className="text-black" />
         </div>

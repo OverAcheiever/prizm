@@ -30,7 +30,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
     <main className={`${space.variable} ${aeonik.variable} ${circa.variable}`}>
       <Toaster
         toastOptions={{
-          className: "font-space",
+          className: "font-space font-bold",
         }}
       />
       <Component {...pageProps} />

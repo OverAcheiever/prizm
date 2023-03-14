@@ -24,7 +24,7 @@ const Feed = () => {
 
   return (
     <div className="h-full w-full max-w-xl rounded-t-3xl border-t-0 border-white bg-[rgb(10,10,10)]">
-      {data ? (
+      {data && data?.length > 0 ? (
         <div className="grid grid-cols-4 gap-y-6 px-5 pt-8 sm:grid-cols-5">
           {data.map((user, key) => {
             return (
