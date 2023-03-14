@@ -77,7 +77,7 @@ const Login = () => {
   // }, []);
 
   return (
-    <div className="flex h-screen w-full items-center justify-center bg-black text-white">
+    <div className="flex h-[100svh] w-full items-center justify-center bg-black text-white">
       {/* <div className="-mt-96 font-circa text-8xl font-bold">Login</div> */}
 
       {!isLoading ? (
