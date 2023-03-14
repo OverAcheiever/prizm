@@ -23,7 +23,8 @@ type CreateContextOptions = {
 };
 
 import { Magic } from "@magic-sdk/admin";
-const magic = new Magic("sk_live_89CC6847FC78EECB");
+import { env } from "@/env.mjs";
+const magic = new Magic(env.MAGIC_KEY);
 
 /**
  * This helper generates the "internals" for a tRPC context. If you need to use it, you can export
