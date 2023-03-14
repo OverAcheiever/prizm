@@ -56,7 +56,7 @@ const Pay = ({ amount }: { amount: number }) => {
               onClick={buy}
             >
               {status !== "loading" && status !== "success" ? (
-                "Buy"
+                "DEPOSIT"
               ) : (
                 <div className="bgb flex h-6 w-6 animate-spin items-center justify-center rounded-full p-1">
                   <div className="h-full w-full rounded-full bg-white"></div>
