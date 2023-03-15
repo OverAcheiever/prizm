@@ -8,6 +8,8 @@ import { Space_Grotesk } from "next/font/google";
 import local from "next/font/local";
 import { Toaster } from "react-hot-toast";
 
+import { Analytics } from "@vercel/analytics/react";
+
 const space = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-space",
@@ -28,6 +30,8 @@ const circa = local({
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <main className={`${space.variable} ${aeonik.variable} ${circa.variable}`}>
+      <Analytics />
+
       <Toaster
         toastOptions={{
           className: "font-space font-bold",

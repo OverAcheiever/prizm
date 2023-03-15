@@ -38,7 +38,7 @@ const Feed = () => {
                       <img
                         src={user.picture}
                         alt=""
-                        className="h-full w-full rounded-full"
+                        className="h-full w-full rounded-full object-cover"
                       />
                     </div>
                     <div className="text-sm text-neutral-500">

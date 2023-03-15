@@ -5,7 +5,7 @@ const Balance = () => {
   const { data } = api.users.balance.useQuery();
 
   return (
-    <div className="flex w-full flex-col items-center pt-5 pb-12 ">
+    <div className="flex w-full flex-col items-center pt-12 pb-12 ">
       <div className="relative -ml-3 flex h-20 w-max items-center justify-center text-8xl font-semibold">
         {data ? (
           <>
